@@ -22,10 +22,10 @@ No seu terminal digite os comandos:
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/julionery/todo-timer.git
+$ git clone https://github.com/julionery/react-todo-timer.git
 
 # Vá para a pasta do repositório
-$ cd todo-timer/
+$ cd react-todo-timer/
 
 # Instale as dependências
 $ yarn
