@@ -41,6 +41,10 @@ export const StatusCard = styled.div`
   transform: translateZ(0);
   padding-top: 10px;
   margin-bottom: 30px;
+
+  @media (max-width: 500px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const CalendarCard = styled.div`
