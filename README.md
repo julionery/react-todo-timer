@@ -2,6 +2,9 @@
 
 Task-Timer Manager é uma aplicação para gerenciamento de tarefas e controle de tempo de execução das tarefas.
 
+### :globe_with_meridians: Demonstração
+- [Link para o site](https://task-timer-manager.netlify.app/)
+
 ### :rocket: Tecnologias
  - [React](https://reactjs.org/ "ReactJS")
  - [TypeScript](https://www.typescriptlang.org/)
