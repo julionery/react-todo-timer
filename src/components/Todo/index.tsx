@@ -41,11 +41,13 @@ const Todo: React.FC<TodoProps> = ({
     setInputText(todo.text);
     setEditTodo(todo);
 
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    const element = document.getElementById('todoForm');
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: element ? 'smooth' : 'auto',
+        top: element ? element.offsetTop - 120 : 580,
+      });
+    }, 100);
   };
 
   const completeHandler = () => {
@@ -120,30 +122,29 @@ const Todo: React.FC<TodoProps> = ({
   return (
     <Container>
       <TodoHeader>
-      {!abaFinished && (
-        <PainelWithLabel>
-          <p>Temporizador</p>
-          <ContainerTimer>
-            <button
-              onClick={timerHandler}
-              type="button"
-              disabled={todo.completed}
-            >
-              <i
-                className={`fas ${todo.activeTimer ? 'fa-pause' : 'fa-play'}`}
-              />
-            </button>
-            <p className="text-timer">
-              <i className="fas fa-clock" />
-              <span>{time.h >= 10 ? `${time.h}:` : `0${time.h}:`}</span>
-              <span>{time.m >= 10 ? `${time.m}:` : `0${time.m}:`}</span>
-              <span>{time.s >= 10 ? time.s : `0${time.s}`}</span>
-            </p>
-          </ContainerTimer>
-        </PainelWithLabel>
-
+        {!abaFinished && (
+          <PainelWithLabel>
+            <p>Temporizador</p>
+            <ContainerTimer>
+              <button
+                onClick={timerHandler}
+                type="button"
+                disabled={todo.completed}
+              >
+                <i
+                  className={`fas ${todo.activeTimer ? 'fa-pause' : 'fa-play'}`}
+                />
+              </button>
+              <p className="text-timer">
+                <i className="fas fa-clock" />
+                <span>{time.h >= 10 ? `${time.h}:` : `0${time.h}:`}</span>
+                <span>{time.m >= 10 ? `${time.m}:` : `0${time.m}:`}</span>
+                <span>{time.s >= 10 ? time.s : `0${time.s}`}</span>
+              </p>
+            </ContainerTimer>
+          </PainelWithLabel>
         )}
-        
+
         <PainelDescription>
           <p>Descrição</p>
           <li

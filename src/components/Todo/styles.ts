@@ -18,6 +18,10 @@ export const Container = styled.div`
     text-decoration: line-through;
     opacity: 0.5;
   }
+
+  @media (max-width: 500px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const TodoHeader = styled.div`
@@ -82,6 +86,10 @@ export const TodoHeader = styled.div`
         display: none;
       }
     }
+  }
+
+  @media (max-width: 500px) {
+    padding: 0 16px;
   }
 `;
 

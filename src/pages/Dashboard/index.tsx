@@ -65,6 +65,14 @@ const Dashboard: React.FC = () => {
 
   const dateChangeHandler = useCallback((day: Date) => {
     setSelectedDate(day);
+    setTabIndex(1);
+    const element = document.getElementById('todoForm');
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: element ? 'smooth' : 'auto',
+        top: element ? element.offsetTop - 120 : 580,
+      });
+    }, 100);
   }, []);
 
   const filterHandler = useCallback(() => {
