@@ -71,40 +71,48 @@ const Dashboard: React.FC = () => {
     switch (status) {
       case 'completed':
         setFilteredTodos(
-          todos.filter(
-            todo =>
-              todo.completed === true && isSameDay(selectedDate, todo.date),
-          ),
+          todos
+            .filter(
+              todo =>
+                todo.completed === true && isSameDay(selectedDate, todo.date),
+            )
+            .reverse(),
         );
         break;
       case 'uncompleted':
         setFilteredTodos(
-          todos.filter(
-            todo =>
-              todo.completed === false && isSameDay(selectedDate, todo.date),
-          ),
+          todos
+            .filter(
+              todo =>
+                todo.completed === false && isSameDay(selectedDate, todo.date),
+            )
+            .reverse(),
         );
         break;
       default:
         if (selectedDate) {
           setFilteredTodos(
-            todos.filter(todo => {
-              const todoDate = todo.date;
-              if (
-                selectedDate.getDate() === todoDate.getDate() &&
-                selectedDate.getMonth() === todoDate.getMonth() &&
-                selectedDate.getFullYear() === todoDate.getFullYear()
-              ) {
-                return todo;
-              }
-              return null;
-            }),
+            todos
+              .filter(todo => {
+                const todoDate = todo.date;
+                if (
+                  selectedDate.getDate() === todoDate.getDate() &&
+                  selectedDate.getMonth() === todoDate.getMonth() &&
+                  selectedDate.getFullYear() === todoDate.getFullYear()
+                ) {
+                  return todo;
+                }
+                return null;
+              })
+              .reverse(),
           );
         }
         break;
     }
 
-    setCompletedTodos(todos.filter((todo: ITodo) => todo.completed === true));
+    setCompletedTodos(
+      todos.filter((todo: ITodo) => todo.completed === true).reverse(),
+    );
   }, [todos, status, selectedDate]);
 
   const selectedDateAsText = useMemo(() => {

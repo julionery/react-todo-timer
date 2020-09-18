@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { format, isToday } from 'date-fns';
 
 import { ITodo } from '../Form';
@@ -30,7 +30,9 @@ const Todo: React.FC<TodoProps> = ({
   abaFinished,
 }) => {
   const deleteHandler = () => {
-    setTodos(todos.filter(item => item.id !== todo.id));
+    if (window.confirm('Tem certeza que deseja excluir este registro?')) {
+      setTodos(todos.filter(item => item.id !== todo.id));
+    }
   };
 
   const editHandler = () => {
@@ -60,6 +62,12 @@ const Todo: React.FC<TodoProps> = ({
   };
 
   const timerHandler = () => {
+    if (!todo.activeTimer) {
+      start();
+    } else {
+      stop();
+    }
+
     setTodos(
       todos.map((item: ITodo) => {
         if (item.id === todo.id) {
@@ -71,6 +79,40 @@ const Todo: React.FC<TodoProps> = ({
         return item;
       }),
     );
+  };
+
+  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
+  const [interv, setInterv] = useState();
+
+  const start = () => {
+    run();
+    setInterv(setInterval(run, 10));
+  };
+
+  let updatedMs = time.ms;
+  let updatedS = time.s;
+  let updatedM = time.m;
+  let updatedH = time.h;
+
+  const run = () => {
+    if (updatedM === 60) {
+      updatedH += 1;
+      updatedM = 0;
+    }
+    if (updatedS === 60) {
+      updatedM += 1;
+      updatedS = 0;
+    }
+    if (updatedMs === 100) {
+      updatedS += 1;
+      updatedMs = 0;
+    }
+    updatedMs += 1;
+    return setTime({ ms: updatedMs, s: updatedS, m: updatedM, h: updatedH });
+  };
+
+  const stop = () => {
+    clearInterval(interv);
   };
 
   return (
@@ -101,7 +143,9 @@ const Todo: React.FC<TodoProps> = ({
             </button>
             <p className="text-timer">
               <i className="fas fa-clock" />
-              00:00:00
+              <span>{time.h >= 10 ? `${time.h}:` : `0${time.h}:`}</span>
+              <span>{time.m >= 10 ? `${time.m}:` : `0${time.m}:`}</span>
+              <span>{time.s >= 10 ? time.s : `0${time.s}`}</span>
             </p>
           </ContainerTimer>
         )}

@@ -1,6 +1,9 @@
 import React, { SetStateAction, Dispatch } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   Container,
   ContainerForm,
@@ -17,6 +20,7 @@ export interface ITodo {
   text: string;
   completed: boolean;
   activeTimer?: boolean;
+  time?: { ms: 0; s: 0; m: 0; h: 0 };
 }
 
 interface FormProps {
@@ -65,6 +69,10 @@ const Form: React.FC<FormProps> = ({
         }),
       );
       setEditTodo(undefined);
+      toast.info('Atualizado com Sucesso!', {
+        autoClose: 2500,
+        position: 'top-right',
+      });
     } else {
       setTodos([
         ...todos,
@@ -75,6 +83,11 @@ const Form: React.FC<FormProps> = ({
           completed: false,
         },
       ]);
+
+      toast.success('Adicionado com Sucesso!', {
+        autoClose: 2500,
+        position: 'top-right',
+      });
     }
 
     setInputText('');
@@ -91,6 +104,8 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <Container>
+      <ToastContainer />
+
       <ContainerForm>
         <InputBloc>
           <input
