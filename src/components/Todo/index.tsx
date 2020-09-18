@@ -146,7 +146,7 @@ const Todo: React.FC<TodoProps> = ({
         )}
 
         <PainelDescription>
-          <p>Descrição</p>
+          <p className={`${abaFinished && 'abaFinished'}`}>Descrição</p>
           <li
             className={`${todo.completed && !abaFinished ? 'completed' : ''} ${
               abaFinished && 'abaFinished'
@@ -168,7 +168,12 @@ const Todo: React.FC<TodoProps> = ({
       <TodoFooter>
         <TodoFooterText>
           {isToday(todo.date) ? (
-            <span>{`Hoje - ${format(todo.date, 'dd/MM/yyyy')}`}</span>
+            <span>
+              {`${abaFinished ? 'Hoje -' : ''}${format(
+                todo.date,
+                'dd/MM/yyyy',
+              )}`}
+            </span>
           ) : (
             format(todo.date, 'dd/MM/yyyy')
           )}

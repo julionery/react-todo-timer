@@ -101,6 +101,12 @@ export const PainelDescription = styled.div`
   p {
     padding-left: 16px;
     padding-bottom: 4px;
+
+    @media (max-width: 500px) {
+      .abaFinished {
+        padding-left: 0px;
+      }
+    }
   }
 `;
 

@@ -120,11 +120,11 @@ const Form: React.FC<FormProps> = ({
               className={inputText !== '' ? 'active' : ''}
             />
             <Button onClick={submitTodoHandler} type="submit">
-              <i className={editTodo ? 'fas fa-save' : 'fas fa-plus'} />
+              <i className={editTodo ? 'fas fa-save' : 'fas fa-save'} />
             </Button>
             {editTodo && (
               <Button onClick={clearEditTodoHandler} type="submit">
-                <i className="fas fa-undo" />
+                <i className="fas fa-times" />
               </Button>
             )}
           </InputBloc>

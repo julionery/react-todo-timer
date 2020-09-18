@@ -18,5 +18,6 @@ export const List = styled.ul`
 
   h3 {
     padding-top: 20px;
+    padding-bottom: 370px;
   }
 `;
