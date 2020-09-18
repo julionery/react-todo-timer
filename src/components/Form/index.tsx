@@ -1,29 +1,43 @@
 import React, { SetStateAction, Dispatch } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Container } from './styles';
+import {
+  Container,
+  ContainerForm,
+  InputBloc,
+  Button,
+  SelectBloc,
+  FilterTodo,
+} from './styles';
 
 export interface ITodo {
   id: string;
+  date: Date;
+  startDate?: Date;
   text: string;
   completed: boolean;
+  activeTimer?: boolean;
 }
 
 interface FormProps {
+  selectedDate: Date;
   inputText: string;
   todos: ITodo[];
   editTodo: ITodo | undefined;
   setInputText: Dispatch<SetStateAction<string>>;
   setTodos: Dispatch<SetStateAction<ITodo[]>>;
+  status: string;
   setStatus: Dispatch<SetStateAction<string>>;
   setEditTodo: Dispatch<SetStateAction<ITodo | undefined>>;
 }
 
 const Form: React.FC<FormProps> = ({
+  selectedDate,
   inputText,
   setInputText,
   todos,
   setTodos,
+  status,
   setStatus,
   editTodo,
   setEditTodo,
@@ -52,7 +66,15 @@ const Form: React.FC<FormProps> = ({
       );
       setEditTodo(undefined);
     } else {
-      setTodos([...todos, { id, text: inputText, completed: false }]);
+      setTodos([
+        ...todos,
+        {
+          id,
+          date: selectedDate,
+          text: inputText,
+          completed: false,
+        },
+      ]);
     }
 
     setInputText('');
@@ -69,38 +91,32 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <Container>
-      <form>
-        <input
-          value={inputText}
-          onChange={inputTextHandler}
-          type="text"
-          className="todo-input"
-        />
-        <button
-          onClick={submitTodoHandler}
-          className="todo-button"
-          type="submit"
-        >
-          <i className={editTodo ? 'fas fa-save' : 'fas fa-plus-square'} />
-        </button>
-        {editTodo && (
-          <button
-            onClick={clearEditTodoHandler}
-            className="todo-button"
-            type="submit"
-          >
-            <i className="fas fa-undo" />
-          </button>
-        )}
-
-        <div className="select">
-          <select name="todos" className="filter-todo" onChange={statusHandler}>
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="uncompleted">Uncompleted</option>
-          </select>
-        </div>
-      </form>
+      <ContainerForm>
+        <InputBloc>
+          <input
+            value={inputText}
+            onChange={inputTextHandler}
+            type="text"
+            placeholder="Digite aqui..."
+            className={inputText !== '' ? 'active' : ''}
+          />
+          <Button onClick={submitTodoHandler} type="submit">
+            <i className={editTodo ? 'fas fa-save' : 'fas fa-plus'} />
+          </Button>
+          {editTodo && (
+            <Button onClick={clearEditTodoHandler} type="submit">
+              <i className="fas fa-undo" />
+            </Button>
+          )}
+        </InputBloc>
+        <SelectBloc>
+          <FilterTodo name="todos" onChange={statusHandler} value={status}>
+            <option value="uncompleted">Em aberto</option>
+            <option value="completed">Finalizadas</option>
+            <option value="all">Todas</option>
+          </FilterTodo>
+        </SelectBloc>
+      </ContainerForm>
     </Container>
   );
 };

@@ -2,11 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0px 40px;
 `;
 
 export const List = styled.ul`
-  min-width: 30%;
   list-style: none;
+  width: 100%;
+  min-width: 30%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  h3 {
+    padding-top: 20px;
+  }
 `;

@@ -8,16 +8,27 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    background: #F0F2F5 ;
+  body, #root {
+    height: 100vh;
+    background: ${props => props.theme.colors.background};
+    font-size: 14px;
+    color:  ${props => props.theme.colors.text};
+    font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased
-  }
-
-  body, input, button {
-    font: 16px "Poppins", sans-serif;
   }
 
   button {
     cursor: pointer;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
   }
 `;
