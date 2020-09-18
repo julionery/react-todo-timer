@@ -85,6 +85,27 @@ export const TodoHeader = styled.div`
   }
 `;
 
+export const PainelDescription = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    padding-left: 16px;
+    padding-bottom: 4px;
+  }
+`;
+
+export const PainelWithLabel = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    padding-bottom: 4px;
+  }
+`;
+
 export const TodoFooter = styled.div`
   display: flex;
   justify-content: space-between;

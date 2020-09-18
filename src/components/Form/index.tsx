@@ -11,6 +11,8 @@ import {
   Button,
   SelectBloc,
   FilterTodo,
+  PainelInput,
+  PainelSelect,
 } from './styles';
 
 export interface ITodo {
@@ -103,34 +105,40 @@ const Form: React.FC<FormProps> = ({
   };
 
   return (
-    <Container>
+    <Container> 
       <ToastContainer />
 
       <ContainerForm>
-        <InputBloc>
-          <input
-            value={inputText}
-            onChange={inputTextHandler}
-            type="text"
-            placeholder="Digite aqui..."
-            className={inputText !== '' ? 'active' : ''}
-          />
-          <Button onClick={submitTodoHandler} type="submit">
-            <i className={editTodo ? 'fas fa-save' : 'fas fa-plus'} />
-          </Button>
-          {editTodo && (
-            <Button onClick={clearEditTodoHandler} type="submit">
-              <i className="fas fa-undo" />
+        <PainelInput>
+          <p>Crie uma nova tarefa:</p>
+          <InputBloc>
+            <input
+              value={inputText}
+              onChange={inputTextHandler}
+              type="text"
+              placeholder="Digite aqui..."
+              className={inputText !== '' ? 'active' : ''}
+            />
+            <Button onClick={submitTodoHandler} type="submit">
+              <i className={editTodo ? 'fas fa-save' : 'fas fa-plus'} />
             </Button>
-          )}
+            {editTodo && (
+              <Button onClick={clearEditTodoHandler} type="submit">
+                <i className="fas fa-undo" />
+              </Button>
+            )}
         </InputBloc>
-        <SelectBloc>
-          <FilterTodo name="todos" onChange={statusHandler} value={status}>
-            <option value="uncompleted">Em aberto</option>
-            <option value="completed">Finalizadas</option>
-            <option value="all">Todas</option>
-          </FilterTodo>
-        </SelectBloc>
+        </PainelInput>
+        <PainelSelect>
+          <p>Filtro:</p>
+          <SelectBloc>
+            <FilterTodo name="todos" onChange={statusHandler} value={status}>
+              <option value="uncompleted">Em aberto</option>
+              <option value="completed">Finalizadas</option>
+              <option value="all">Todas</option>
+            </FilterTodo>
+          </SelectBloc>
+        </PainelSelect>
       </ContainerForm>
     </Container>
   );

@@ -34,7 +34,7 @@ const Dashboard: React.FC = () => {
 
   const [status, setStatus] = usePersistedState<string>(
     '@todo-timer:status',
-    'uncompleted',
+    'all',
   );
 
   const getLocalTodos = useCallback(() => {

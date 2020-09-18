@@ -6,6 +6,8 @@ import { ITodo } from '../Form';
 import {
   Container,
   TodoHeader,
+  PainelWithLabel,
+  PainelDescription,
   TodoFooter,
   ContainerTimer,
   TodoFooterText,
@@ -118,19 +120,9 @@ const Todo: React.FC<TodoProps> = ({
   return (
     <Container>
       <TodoHeader>
-        {!abaFinished && (
-          <button onClick={completeHandler} type="button">
-            <i className={`fas ${todo.completed ? 'fa-check' : ''}`} />
-          </button>
-        )}
-        <li
-          className={`${todo.completed && !abaFinished ? 'completed' : ''} ${
-            abaFinished && 'abaFinished'
-          }`}
-        >
-          {todo.text}
-        </li>
-        {!abaFinished && (
+      {!abaFinished && (
+        <PainelWithLabel>
+          <p>Temporizador</p>
           <ContainerTimer>
             <button
               onClick={timerHandler}
@@ -148,6 +140,28 @@ const Todo: React.FC<TodoProps> = ({
               <span>{time.s >= 10 ? time.s : `0${time.s}`}</span>
             </p>
           </ContainerTimer>
+        </PainelWithLabel>
+
+        )}
+        
+        <PainelDescription>
+          <p>Descrição</p>
+          <li
+            className={`${todo.completed && !abaFinished ? 'completed' : ''} ${
+              abaFinished && 'abaFinished'
+            }`}
+          >
+            {todo.text}
+          </li>
+        </PainelDescription>
+
+        {!abaFinished && (
+          <PainelWithLabel>
+            <p>{`${todo.completed ? 'Reabrir' : 'Finalizar'}`}</p>
+            <button onClick={completeHandler} type="button">
+              <i className={`fas ${todo.completed ? 'fa-check' : ''}`} />
+            </button>
+          </PainelWithLabel>
         )}
       </TodoHeader>
       <TodoFooter>

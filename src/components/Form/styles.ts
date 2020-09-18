@@ -35,6 +35,26 @@ export const InputBloc = styled.div`
   }
 `;
 
+export const PainelInput = styled.div`
+  flex: 1;
+  p {
+    margin-left: 2px;
+    margin-bottom: 4px;
+  }
+`;
+
+export const PainelSelect = styled.div`
+  p {
+    margin-left: 16px;
+    margin-bottom: 4px;
+
+    @media (max-width: 1000px) {
+      margin-top: 8px;
+      margin-left: 0px;
+    }
+  }
+`;
+
 export const Button = styled.button`
   display: flex;
   align-items: center;
@@ -97,6 +117,6 @@ export const FilterTodo = styled.select`
   background-size: 0.65em auto, 100%;
 
   @media (max-width: 1000px) {
-    margin-top: 8px;
+    margin-top: 4px;
   }
 `;
