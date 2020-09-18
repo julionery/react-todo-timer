@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   padding: 0px 40px;
+
+  @media (max-width: 500px) {
+    padding: 0px 16px;
+  }
 `;
 
 export const List = styled.ul`

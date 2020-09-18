@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 10px 40px 10px;
+
+  @media (max-width: 500px) {
+    padding: 10px 16px 10px;
+  }
 `;
 
 export const ContainerForm = styled.form`

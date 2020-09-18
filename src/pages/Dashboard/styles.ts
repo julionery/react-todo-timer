@@ -21,6 +21,10 @@ export const Info = styled.div`
   padding: 40px 40px;
   border-left: 2px solid ${props => props.theme.colors.border};
   border-right: 2px solid ${props => props.theme.colors.border};
+
+  @media (max-width: 500px) {
+    padding: 16px 16px;
+  }
 `;
 
 export const StatusCard = styled.div`
@@ -90,5 +94,6 @@ export const TaskBoardHeader = styled.div`
 
   @media (max-width: 500px) {
     margin-top: -110px;
+    padding: 0px 16px 16px;
   }
 `;
