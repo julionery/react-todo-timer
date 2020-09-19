@@ -18,11 +18,11 @@ import {
 export interface ITodo {
   id: string;
   date: Date;
-  startDate?: Date;
   text: string;
   completed: boolean;
   activeTimer?: boolean;
-  time?: { ms: 0; s: 0; m: 0; h: 0 };
+  startDate?: Date;
+  miliseconds?: number;
 }
 
 interface FormProps {
@@ -135,7 +135,8 @@ const Form: React.FC<FormProps> = ({
             <FilterTodo name="todos" onChange={statusHandler} value={status}>
               <option value="uncompleted">Em aberto</option>
               <option value="completed">Finalizadas</option>
-              <option value="all">Todas</option>
+              <option value="allDay">Todas</option>
+              <option value="all">Todas Cadastras</option>
             </FilterTodo>
           </SelectBloc>
         </PainelSelect>

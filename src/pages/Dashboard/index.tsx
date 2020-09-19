@@ -48,6 +48,7 @@ const Dashboard: React.FC = () => {
           return {
             ...item,
             date: new Date(item.date),
+            startDate: item.startDate && new Date(item.startDate),
           };
         });
 
@@ -97,7 +98,7 @@ const Dashboard: React.FC = () => {
             .reverse(),
         );
         break;
-      default:
+      case 'allDay':
         if (selectedDate) {
           setFilteredTodos(
             todos
@@ -115,6 +116,9 @@ const Dashboard: React.FC = () => {
               .reverse(),
           );
         }
+        break;
+      default:
+        setFilteredTodos(todos);
         break;
     }
 

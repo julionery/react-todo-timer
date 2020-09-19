@@ -55,7 +55,6 @@ export const CalendarCard = styled.div`
   min-width: 300px;
   max-width: 300px;
   min-height: 320px;
-  max-height: 320px;
   background: ${props => props.theme.colors.primary};
   overflow: hidden;
   border-radius: 1.5rem/2rem;

@@ -81,7 +81,7 @@ export const Button = styled.button`
 `;
 
 export const SelectBloc = styled.div`
-  width: 150px;
+  width: 170px;
   overflow: hidden;
   margin-left: 16px;
 

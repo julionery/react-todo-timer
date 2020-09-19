@@ -15,7 +15,7 @@ export const Container = styled.div`
   margin-bottom: 30px;
 
   .completed {
-    text-decoration: line-through;
+    color: gray;
     opacity: 0.5;
   }
 
@@ -140,7 +140,7 @@ export const ContainerTimer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 8px;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.secundary};
 
   p {
     padding-top: 8px;
@@ -148,6 +148,11 @@ export const ContainerTimer = styled.div`
     i {
       margin-right: 4px;
     }
+  }
+
+  .finished {
+    color: gray;
+    opacity: 0.5;
   }
 `;
 
