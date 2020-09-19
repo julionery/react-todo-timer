@@ -53,7 +53,7 @@ const TodoList: React.FC<TodoListProps> = ({
   return (
     <Container>
       <List>
-        {abaFinished && (
+        {filteredTodos.length !== 0 && abaFinished && (
           <TotalsPanel>
             <h2>
               Total de tarefas finalizados:
