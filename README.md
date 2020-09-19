@@ -2,6 +2,9 @@
 
 Task-Timer Manager é uma aplicação para gerenciamento de tarefas e controle de tempo.
 
+### :globe_with_meridians: Demonstração
+- [Link para o site.](https://task-timer-manager.netlify.app/)
+
 ## WEB
 ![](https://github.com/julionery/docs/blob/master/geral/task-timer.gif?raw=true)
 
@@ -10,9 +13,6 @@ Task-Timer Manager é uma aplicação para gerenciamento de tarefas e controle d
 <h3 align="center">
     <img alt="Mobile" title="Mobile" width="300px" src="https://github.com/julionery/docs/blob/master/geral/task-timer-mobile.gif?raw=true">
 </h3>  
-
-### :globe_with_meridians: Demonstração
-- [Link para o site](https://task-timer-manager.netlify.app/)
 
 ### :rocket: Tecnologias
  - [React](https://reactjs.org/ "ReactJS")
