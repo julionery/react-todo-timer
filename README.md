@@ -1,6 +1,15 @@
 <h2 align="center">TASK-TIMER MANAGER</h2>
 
-Task-Timer Manager é uma aplicação para gerenciamento de tarefas e controle de tempo de execução das tarefas.
+Task-Timer Manager é uma aplicação para gerenciamento de tarefas e controle de tempo.
+
+## WEB
+![](https://github.com/julionery/docs/blob/master/geral/task-timer.gif?raw=true)
+
+## MOBILE
+
+<h3 align="center">
+    <img alt="Mobile" title="Mobile" width="300px" src="https://github.com/julionery/docs/blob/master/geral/task-timer-mobile.gif?raw=true">
+</h3>  
 
 ### :globe_with_meridians: Demonstração
 - [Link para o site](https://task-timer-manager.netlify.app/)
@@ -45,7 +54,7 @@ $ yarn start
 - Salve as alterações e crie uma mensagem de commit contando o que você fez:`git commit -m "feature: My new feature"`
 - Envie as suas alterações: `git push origin my-feature`
 
-> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://github.com/firstcontributions/first-contributions)
+> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://github.com/firstcontributions/first-contributions).
 
 ## :memo: Licença
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
