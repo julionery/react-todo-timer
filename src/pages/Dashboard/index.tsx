@@ -12,6 +12,7 @@ import 'react-tabs/style/react-tabs.css';
 import usePersistedState from '../../utils/usePersistedState';
 import Form, { ITodo } from '../../components/Form';
 import TodoList from '../../components/TodoList';
+import getTimeByMiliseconds from '../../utils/getTimeByMiliseconds';
 
 import {
   Container,
@@ -140,10 +141,56 @@ const Dashboard: React.FC = () => {
     saveLocalTodos();
   }, [filterHandler, saveLocalTodos]);
 
+  const totalHoursWorked = useMemo(() => {
+    const { totalMiliseconds } = completedTodos.reduce(
+      (accumulator, todo) => {
+        if (todo.miliseconds) {
+          accumulator.totalMiliseconds += todo.miliseconds;
+        }
+
+        return accumulator;
+      },
+      { totalMiliseconds: 0 },
+    );
+    const time = getTimeByMiliseconds(totalMiliseconds);
+
+    const hours = time.h >= 10 ? `${time.h}h:` : `0${time.h}h:`;
+
+    const minutes = time.m >= 10 ? `${time.m}m:` : `0${time.m}m:`;
+    const seconds = time.s >= 10 ? `${time.s}s` : `0${time.s}s`;
+
+    return `${hours}${minutes}${seconds}`;
+  }, [completedTodos]);
+
+  const totalTaskOpen = useMemo(() => {
+    const todosOpens = todos.filter(todo => todo.completed === false);
+    return todosOpens.length;
+  }, [todos]);
+
   return (
     <Container>
       <Info>
-        <StatusCard>Olá,</StatusCard>
+        <StatusCard>
+          <strong>Olá, </strong>
+          <strong>Resumo de suas tarefas:</strong>
+          <span>
+            Total:
+            {` ${todos.length}`}
+          </span>
+          <span>
+            Pendentes:
+            {` ${totalTaskOpen}`}
+          </span>
+          <span>
+            Concluídas:
+            {` ${completedTodos.length}`}
+          </span>
+          <span>
+            Total horas trabalhadas:
+            {` ${totalHoursWorked}`}
+          </span>
+        </StatusCard>
+
         <CalendarCard>
           <DayPicker
             weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}

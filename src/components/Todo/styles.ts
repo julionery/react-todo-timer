@@ -156,6 +156,11 @@ export const ContainerTimer = styled.div`
   }
 `;
 
-export const TodoFooterText = styled.div``;
+export const TodoFooterText = styled.div`
+  .finished {
+    color: gray;
+    opacity: 0.5;
+  }
+`;
 
 export const TodoFooterButtons = styled.div``;

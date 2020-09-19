@@ -21,3 +21,11 @@ export const List = styled.ul`
     padding-bottom: 370px;
   }
 `;
+
+export const TotalsPanel = styled.div`
+  padding-bottom: 16px;
+
+  h2 {
+    font-size: 18px;
+  }
+`;

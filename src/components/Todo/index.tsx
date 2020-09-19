@@ -14,6 +14,7 @@ import {
 } from 'date-fns';
 
 import { ITodo } from '../Form';
+import getTimeByMiliseconds from '../../utils/getTimeByMiliseconds';
 
 import {
   Container,
@@ -51,28 +52,6 @@ const Todo: React.FC<TodoProps> = ({
   const updatedM = useRef(time.m);
   const updatedH = useRef(time.h);
 
-  function setTimeByMiliseconds(value: number) {
-    const miliseconds = value % 100;
-    let seconds = Math.floor(value / 1000);
-    let minutes = 0;
-    let hours = 0;
-    if (seconds > 60) {
-      minutes = Math.floor(seconds / 60);
-      seconds -= minutes * 60;
-    }
-    if (minutes > 60) {
-      hours = Math.floor(minutes / 60);
-      minutes -= hours * 60;
-    }
-
-    updatedH.current = hours;
-    updatedM.current = minutes;
-    updatedS.current = seconds;
-    updatedMs.current = miliseconds;
-
-    setTime({ ms: miliseconds, s: seconds, m: minutes, h: hours });
-  }
-
   const run = useCallback(() => {
     if (updatedM.current === 60) {
       updatedH.current += 1;
@@ -102,12 +81,22 @@ const Todo: React.FC<TodoProps> = ({
           new Date(),
           todo.startDate,
         );
-        setTimeByMiliseconds(miliseconds);
+
+        const resultTime = getTimeByMiliseconds(miliseconds);
+
+        updatedH.current = resultTime.h;
+        updatedM.current = resultTime.m;
+        updatedS.current = resultTime.s;
+        updatedMs.current = resultTime.ms;
+
+        setTime(resultTime);
+
         run();
         setInterv(setInterval(run, 10));
       }
     } else if (todo.miliseconds) {
-      setTimeByMiliseconds(todo.miliseconds);
+      const resultTime = getTimeByMiliseconds(todo.miliseconds);
+      setTime(resultTime);
     }
   }, [run, todo.activeTimer, todo.miliseconds, todo.startDate]);
 
@@ -264,7 +253,7 @@ const Todo: React.FC<TodoProps> = ({
       <TodoFooter>
         <TodoFooterText>
           {isToday(todo.date) ? (
-            <span>
+            <span className={`${todo.completed && 'finished'}`}>
               {`${abaFinished ? 'Hoje -' : ''}${format(
                 todo.date,
                 'dd/MM/yyyy',

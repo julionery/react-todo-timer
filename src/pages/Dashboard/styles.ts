@@ -18,9 +18,18 @@ export const Info = styled.div`
   text-align: center;
   align-items: center;
 
-  padding: 40px 40px;
+  padding: 40px 10px;
   border-left: 2px solid ${props => props.theme.colors.border};
   border-right: 2px solid ${props => props.theme.colors.border};
+
+  @media (max-width: 850px) {
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 
   @media (max-width: 500px) {
     padding: 16px 16px;
@@ -29,9 +38,9 @@ export const Info = styled.div`
 
 export const StatusCard = styled.div`
   display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: start;
   min-width: 300px;
   min-height: 150px;
   background: ${props => props.theme.colors.primary};
@@ -41,9 +50,21 @@ export const StatusCard = styled.div`
   transform: translateZ(0);
   padding-top: 10px;
   margin-bottom: 30px;
+  padding-left: 18px;
+
+  span {
+    font-size: 14px;
+  }
+
+  @media (max-width: 1100px) {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
 
   @media (max-width: 500px) {
     margin-bottom: 16px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
 `;
 
